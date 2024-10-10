@@ -9,28 +9,34 @@ Zadání 4: Pokud je menu zavřené nechte mu jen třídu `hamburger`. Pro otev�
   `hamburger--otevrene`.
 */
 
+import { useState } from 'react';
+
 export const Uloha5 = () => {
+  const [ jeOtevrene, setJeOtevrene ] = useState(false)
+
   return (
     <div className='menu'>
-      <button className="hamburger" aria-label="menu">
+      <button onClick={() => {setJeOtevrene(!jeOtevrene)}} className={"hamburger" + (jeOtevrene ? 'hamburger--otevrene' : '')} aria-label="menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <ul>
-        <li>
-          <a href="#o-nas">O nás</a>
-        </li>
-        <li>
-          <a href="#co-delame">Co děláme</a>
-        </li>
-        <li>
-          <a href="#kontakty">Kontakty</a>
-        </li>
-        <li>
-          <a href="#cenik">Ceník</a>
-        </li>
-      </ul>
+      { jeOtevrene &&
+        <ul>
+          <li>
+            <a href="#o-nas">O nás</a>
+          </li>
+          <li>
+            <a href="#co-delame">Co děláme</a>
+          </li>
+          <li>
+            <a href="#kontakty">Kontakty</a>
+          </li>
+          <li>
+            <a href="#cenik">Ceník</a>
+          </li>
+        </ul>
+      }
     </div>
   );
 };

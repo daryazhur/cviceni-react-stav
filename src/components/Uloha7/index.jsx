@@ -7,19 +7,23 @@ Zadání 3: Po kliknutí na tlačítko zvětši stav o deset. Nejvýše ale do s
 Zadání 4. Nastav prvku `ukazatel-uspechu__postup` šířku podle stavové proměnné.
 */
 
+import { useState } from 'react'
+
 const UkazatelPokroku = ({ barva }) => {
+  const [postup, setPostup] = useState(0)
+
   return (
     <div className="ukazatel-uspechu">
       <div className="ukazatel-uspechu__ramecek">
         <div
           className="ukazatel-uspechu__postup"
           style={{
-            width: '40%',
-            backgroundColor: 'red',
+            width: postup + '%',
+            backgroundColor: barva,
           }}
         ></div>
       </div>
-      <button>postoupit o 10 %</button>
+      <button onClick={() => setPostup(postup + 10)} disabled={postup >= 100}>postoupit o 10 %</button>
     </div>
   )
 }

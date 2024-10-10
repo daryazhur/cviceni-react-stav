@@ -21,10 +21,10 @@ export const Uloha1 = () => {
         className="zarovka__ikona"
       />
       <div className="zarovka__tlacitka">
-        <button className="zarovka__tlacitko" disabled={jeZapnuta}>
+        <button onClick={() => { setJeZapnuta(true)}} className="zarovka__tlacitko" disabled={jeZapnuta}>
           zapnout
         </button>
-        <button className="zarovka__tlacitko" disabled={!jeZapnuta}>
+        <button onClick={() => { setJeZapnuta(false)}} className="zarovka__tlacitko" disabled={!jeZapnuta}>
           vypnout
         </button>
       </div>

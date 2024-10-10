@@ -1,4 +1,5 @@
 import { useCasVSekundach } from './hodiny'
+import React from 'react'
 
 /*
 Zadání: Pomocí předchystané stavové proměnné, která se mění každou sekundu, zobraz aktuální čas
@@ -11,9 +12,16 @@ Nápověda: Pokud je v `casVSekundach` nula, pak je 0:00:00. Pokud je v `casVSek
 export const ZaverecnyBonus3 = () => {
   const casVSekundach = useCasVSekundach()
 
+  const formatujCas = (cas) => {
+    const hodiny = Math.floor(cas / 3600)
+    const minuty = Math.floor((cas % 3600) / 60)
+    const sekundy = cas % 60
+    return `${hodiny}:${String(minuty).padStart(2, "0")}:${String(sekundy).padStart(2, "0")}`
+  }
+
   return (
     <>
-      Čas právě teď: <b>{casVSekundach}</b>
+      Čas právě teď: <b>{formatujCas(casVSekundach)}</b>
     </>
   )
 }
